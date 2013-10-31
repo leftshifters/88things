@@ -3,7 +3,7 @@ var Invoice = require('../lib/invoice');
 
 describe('Invoice', function() {
   describe('instance', function() {
-    var invoice = new Invoice();
+    var invoice = new Invoice().toData();
 
     it('default properties', function() {
       assert.strictEqual(typeof invoice.number, 'string');
