@@ -1,0 +1,21 @@
+{
+  "name": "88things",
+  "version": "0.0.0",
+  "description": "88 Things",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vxtindia/88things.git"
+  },
+  "author": "Debjeet Biswas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vxtindia/88things/issues"
+  },
+  "devDependencies": {
+    "mocha": "~1.13.0"
+  }
+}
