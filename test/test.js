@@ -3,7 +3,8 @@ var Invoice = require('../lib/invoice');
 
 describe('Invoice', function() {
   describe('instance', function() {
-    var invoice = new Invoice();
+    var id;
+    var invoice = new Invoice({ number: 'BB-001' });
     var invoiceData = invoice.toData();
 
     it('default properties', function() {
@@ -23,6 +24,26 @@ describe('Invoice', function() {
       assert.strictEqual(typeof invoiceData.paymentInstruction, 'string');
     });
 
+    it('store invoice', function(done) {
+      invoice.save(function(err, invoice) {
+        id = invoice._id;
+        done();
+      });
+    });
+
+    it('fetch invoice', function(done) {
+      Invoice.getById(id, function(err, invoice) {
+        if (err) return done(err);
+        assert.equal(invoice._id.toString(), id);
+        done();
+      });
+    });
+
+    it('validate', function() {
+      var result = invoice.validate();
+      assert.strictEqual(result.valid, true);
+      assert.strictEqual(result.reasons.length, 0);
+    });
 
   });
 });
